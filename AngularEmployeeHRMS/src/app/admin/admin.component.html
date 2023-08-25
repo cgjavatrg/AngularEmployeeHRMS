@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-3">
+        <nav class ="navbar bg-light">
+            <ul class ="nav navbar-nav">
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="empInLastSomeYears"> List All Employees and count joined in last number of years. </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="hireDateYearGreaterThan"> List All Employees and count joined in after perticular year </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="assigndept"> Assign Department to Employee </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="assignmanager"> Assign Manager to Department </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="assigntitle"> Assign Title to Employee </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" routerLink="deleteemp"> Delete Employee </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-9">
+         <div class="container">
+            <h4>Admin Module </h4>
+            <router-outlet></router-outlet>
+         </div>
+     </div>
+</div>
+

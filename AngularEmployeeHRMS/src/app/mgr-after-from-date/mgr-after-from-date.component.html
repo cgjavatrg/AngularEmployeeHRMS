@@ -1,0 +1,39 @@
+<form  class="form-inline" (ngSubmit)="loadManagersAfterFromDate()">
+
+    <div class="form-group">
+      <label for="fromdate">From Date </label>
+      <input type="date" class="form-control" id="fromdate" required [(ngModel)]="fromDate" value="{{fromDate}}" name="fromdate" min="1985-01-01" max="{{fromDate}}">
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <hr/>
+  <div *ngIf="errMsg!==null || errMsg!==''" >
+    <font color="red" size="4">{{errMsg}}</font>
+  </div>
+  <hr/>
+  <div *ngIf="!wait" class="spinner-border text-info"></div>
+ 
+  <table class="table table-bordered table-sm">
+    <tr>
+        <th>Employee No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Hire Date</th>
+   
+    </tr>
+    <tr *ngFor="let emp of pageOfItems">
+        <td>{{emp.empNo}}</td>
+        <td>{{emp.firstName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.hireDate}}</td>
+       
+    </tr>
+
+</table>
+<br/>
+<div >
+    <jw-pagination [items]="empdtoList" (changePage)="onChangePage($event)"></jw-pagination>
+</div>
+
+
+

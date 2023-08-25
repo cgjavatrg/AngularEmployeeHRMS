@@ -1,0 +1,24 @@
+<h4> Manager List </h4>
+
+<table class="table table-bordered table-sm">
+    <tr>
+        <th>Employee No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th> Birth Date</th>
+        <th>Department Name</th>
+    </tr>
+    <tr *ngFor="let mgr of pageOfItems">
+        <td>{{mgr.empNo}}</td>
+        <td>{{mgr.firstName}}</td>
+        <td>{{mgr.lastName}}</td>
+        <td>{{mgr.birthDate}}</td>
+        <td>{{mgr.deptName}}</td>
+    </tr>
+
+</table>
+
+<br/>
+<div >
+    <jw-pagination [items]="mgrlist" (changePage)="onChangePage($event)"></jw-pagination>
+</div>

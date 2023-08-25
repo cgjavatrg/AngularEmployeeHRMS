@@ -1,0 +1,85 @@
+
+<h4>Assign Manager To Department </h4>
+<div class="row">  
+
+    <div class="col-sm-4" >  
+      <div style="width: 400px;">  
+        <form [formGroup]="assignmgrform" (ngSubmit)="assignManagerToDepartment()">  
+        
+            <div class="form-group">
+                <label for="deptno">Department Number </label>
+                <select class="form-control" (blur)="checkRecords()" formControlName="deptNo" name="deptno" id="deptno">
+                    <option *ngFor="let dept of deptList" value="{{dept.deptNo}}" >{{dept.deptNo}} {{dept.deptName}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf = "(DeptNo.touched) && (DeptNo.invalid)"   
+                  style="margin-top: 5px;">  
+                    <span *ngIf="DeptNo.errors.required">Department is required</span>  
+                  </div>  
+            </div>
+            <div class="form-group">  
+                <label for="empno">Employee Id</label>  
+                <input type="text" class="form-control"  formControlName="empNo" data-toggle="tooltip"   
+                   data-placement="right" title="Enter Employee No" >  
+                <div class="alert alert-danger" *ngIf = "(EmpNo.touched) && (EmpNo.invalid)"   
+                  style="margin-top: 5px;">  
+                    <span *ngIf="EmpNo.errors.required">Employee number is required</span>  
+                      <span *ngIf = "EmpNo.errors.pattern">   
+                          Enter employee id as digit 
+                      </span>                     
+                  </div>  
+            </div>  
+            <div class="form-group">  
+                <label for="fromdate">From Date</label>  
+                <input type="date" id="fromdate" name="fromdate" class="form-control"  formControlName="fromDate" data-toggle="tooltip" max="{{dateStr}}" 
+                   data-placement="right" title="Enter From Date" >  
+                <div class="alert alert-danger" *ngIf = "(FromDate.touched) && (FromDate.invalid)"   
+                  style="margin-top: 5px;">  
+                    <span *ngIf="FromDate.errors.required">From Date is required</span>  
+                                      
+                  </div>  
+            </div>  
+            <div class="form-group">  
+                <label for="todate">To Date</label>  
+                <input type="date" id="todate" name="todate" class="form-control"  formControlName="toDate" data-toggle="tooltip"  
+                   data-placement="right" title="Enter From Date" >  
+                <div class="alert alert-danger" *ngIf = "(ToDate.touched) && (ToDate.invalid)"   
+                  style="margin-top: 5px;">  
+                    <span *ngIf="ToDate.errors.required">To Date is required</span>  
+                                      
+                  </div>  
+            </div>  
+          <br/>
+            <button type="submit" class="btn btn-success" [disabled]="!assignmgrform.valid">Submit</button>
+           
+        </form>
+        <div class="alert alert-danger" *ngIf="errorMsg!=null">
+          {{errorMsg}}
+        </div> 
+        <div class="alert alert-succcess" *ngIf="errorMsg===null">
+            {{status}}
+          </div> 
+    </div>  
+    <div class="col-sm-4"></div>  
+    <div class="col-sm-4"></div>  
+  </div>  
+
+    
+  </div>  
+
+  <hr>
+  <table class="table table-bordered table-sm">
+    <tr>
+        <th>Employee No</th>
+        <th>Dept No</th>
+        <th>From Date</th>
+        <th>To Date</th>
+    </tr>
+    <tr *ngFor="let emp of deptmgrList">
+        <td>{{emp.deptManagerPK.empNo}}</td>
+        <td>{{emp.deptManagerPK.deptNo}}</td>
+        <td>{{emp.fromDate}}</td>
+        <td>{{emp.toDate}}</td>
+    </tr>
+
+</table>
+

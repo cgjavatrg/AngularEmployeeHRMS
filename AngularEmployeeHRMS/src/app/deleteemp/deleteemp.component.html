@@ -1,0 +1,17 @@
+<h4>Delete Employee </h4>
+<form  class="form-inline" (ngSubmit)="deleteEmployee()">
+    <div class="form-group">
+        <label for="empno">Enter Employee ID  </label>
+        <input type="number" class="form-control" id="empno" required [(ngModel)]="empNo" name="empno" min="1">
+    </div>
+ 
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <hr/>
+  <div *ngIf="errMsg!==null || errMsg!==''" >
+    <font color="red" size="4">{{errMsg}}</font>
+  </div>
+  <hr/>
+  <div *ngIf="errMsg===null || errMsg===''" >
+    <h5>{{status}}</h5>
+  </div>
